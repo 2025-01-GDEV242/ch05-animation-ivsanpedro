@@ -113,7 +113,7 @@ public class BoxBall
             xSpeed = -xSpeed;
         } 
         //left wall
-        if (xPosition <= (left + diameter)) {
+        if (xPosition < left) {
             xPosition = (int)(left + diameter);
             xSpeed = -xSpeed; 
         }
