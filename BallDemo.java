@@ -75,25 +75,27 @@ public class BallDemo
         Random random = new Random ();
         // int height = random.nextInt(401)+50;
         // int width = random.nextInt(501)+50;
-        for (int count=1; count<=numOfBalls; count++){
-            int height = random.nextInt(401)+50;
-            int width = random.nextInt(501)+50;
-            BoxBall ball = new BoxBall(width, height, 16, Color.BLUE, 450, 50, 550, 50, 15, 15, myCanvas);
-            ball.draw();
-            ball.move();
-        }
-        
-        
-        // BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, bottom, top, right, left, 15, 15, myCanvas);
-        // ball.draw();
-        //set up collection of boxball objects (ArrayList?) - could this be a separate method, creating new balls
-            //has to pass four parameters (position of all four walls)
-            //do i pass the info to the boxball (YES) or does the ball determine radius, color, startPosition
-                //xSpeed, and ySpeed
-        // while (true) {
-            // myCanvas.wait(50);           // small delay
+    
+        // for (int count=1; count<=numOfBalls; count++){
+            // int height = random.nextInt(401)+50;
+            // int width = random.nextInt(501)+50;
+            // int speed = random.nextInt(16);
+            // int speed2 = random.nextInt(16);
+            // BoxBall ball = new BoxBall(width, height, 16, Color.BLUE, 450, 50, 550, 50, speed, speed2, myCanvas);
+            // ball.draw();
             // ball.move();
         // }
+        int height = random.nextInt(401)+50;
+        int width = random.nextInt(501)+50;
+        int speed = random.nextInt(16);
+        int speed2 = random.nextInt(16);
+        BoxBall ball = new BoxBall(width, height, 16, Color.BLUE, 450, 50, 550, 50, speed, speed2, myCanvas);
+        ball.draw();
+        
+         while (true) {
+             myCanvas.wait(50);           // small delay
+             ball.move();
+         }
         
         
     }
