@@ -51,4 +51,34 @@ public class BallDemo
             }
         }
     }
+    
+    /**
+     * @param numOfBalls number of balls to set bouncing in a box in the middle of the canvas
+     */
+    public void boxBounce(int numOfBalls){
+        //set up the four walls as integer
+        int top = 50; //draw top
+        myCanvas.setForegroundColor(Color.BLACK);
+        myCanvas.drawLine(50, top, 550, top);
+        int bottom = 450; //draw bottom
+        myCanvas.setForegroundColor(Color.BLACK);
+        myCanvas.drawLine(50, bottom, 550, bottom);
+        int right = 550; //draw right
+        myCanvas.setForegroundColor(Color.BLACK);
+        myCanvas.drawLine(right, 50, right, 450);
+        int left = 50; //draw left
+        myCanvas.setForegroundColor(Color.BLACK);
+        myCanvas.drawLine(left, 50, left, 450);
+    
+        //draw the box (private method)
+        //set up collection of boxball objects (ArrayList?) - could this be a separate method, creating new balls
+            //has to pass four parameters (position of all four walls)
+            //do i pass the info to the boxball (YES) or does the ball determine radius, color, startPosition
+                //xSpeed, and ySpeed
+                
+        // while (true) {
+            // //make the balls move within the box
+        // }
+        
+    }
 }
