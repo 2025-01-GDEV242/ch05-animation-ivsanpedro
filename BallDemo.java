@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.Random;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -71,7 +72,7 @@ public class BallDemo
         myCanvas.drawLine(left, 50, left, 450);
         
         //create ball
-        BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, bottom, top, right, left, 10, 10, myCanvas);
+        BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, bottom, top, right, left, 15, 15, myCanvas);
         ball.draw();
         //set up collection of boxball objects (ArrayList?) - could this be a separate method, creating new balls
             //has to pass four parameters (position of all four walls)
@@ -83,5 +84,14 @@ public class BallDemo
             ball.move();
         }
         
+    }
+    
+    private void newBall(int numBalls){
+        Random random = new Random ();
+        int height = random.nextInt(401)+50;
+        int width = random.nextInt(501)+50;
+        for (int count=1; count<=numBalls; count++){
+            BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, 450, 50, 550, 50, 15, 15, myCanvas);
+        }
     }
 }

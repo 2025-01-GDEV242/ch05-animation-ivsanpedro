@@ -92,6 +92,7 @@ public class BoxBall
             
         // compute new position
         yPosition += ySpeed;
+        xPosition += xSpeed;
         xPosition +=2;
         
         //This is where you update position based on xSpeed and ySpeed
@@ -99,20 +100,20 @@ public class BoxBall
         // check if it has hit the ground
         if (yPosition >= (bottom - diameter) && ySpeed > 0) {
             yPosition = (int)(bottom - diameter);
+            ySpeed = -ySpeed; //goes opposite direction
+        } 
+        //top wall
+        if (yPosition < 50) {
+            yPosition = (int)(top + diameter);
             ySpeed = -ySpeed; 
-        }
-        //check if hits the top
-        if (yPosition <= (top - diameter) && ySpeed > 0) {
-            yPosition = (int)(top - diameter);
-            ySpeed += ySpeed; 
-        }
-        //check if it hits the right wall
-        if (xPosition >= (right + diameter) && xSpeed > 0) {
-            xPosition = (int)(right + diameter);
-            xSpeed = -xSpeed; 
-        }
-        //check if it hits the left wall
-        if (xPosition <= (left + diameter) && ySpeed > 0) {
+        } 
+        //right wall
+        if (xPosition > (right-diameter)) {
+            xPosition = (int)(right - diameter);
+            xSpeed = -xSpeed;
+        } 
+        //left wall
+        if (xPosition <= (left + diameter)) {
             xPosition = (int)(left + diameter);
             xSpeed = -xSpeed; 
         }
