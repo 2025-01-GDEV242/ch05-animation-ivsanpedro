@@ -69,16 +69,19 @@ public class BallDemo
         int left = 50; //draw left
         myCanvas.setForegroundColor(Color.BLACK);
         myCanvas.drawLine(left, 50, left, 450);
-    
-        //draw the box (private method)
+        
+        //create ball
+        BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, bottom, top, right, left, 10, 10, myCanvas);
+        ball.draw();
         //set up collection of boxball objects (ArrayList?) - could this be a separate method, creating new balls
             //has to pass four parameters (position of all four walls)
             //do i pass the info to the boxball (YES) or does the ball determine radius, color, startPosition
                 //xSpeed, and ySpeed
-                
-        // while (true) {
-            // //make the balls move within the box
-        // }
+
+        while (true) {
+            myCanvas.wait(50);           // small delay
+            ball.move();
+        }
         
     }
 }

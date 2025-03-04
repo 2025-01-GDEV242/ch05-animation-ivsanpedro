@@ -25,7 +25,11 @@ public class BoxBall
     private int diameter;
     private int xPosition;
     private int yPosition;
-    //private final int groundPosition;      // y position of ground
+    //private final int bottom = 450;      // y position of ground
+    private int bottom;
+    private int top;
+    private int left;
+    private int right;
     private Canvas canvas;
     
     private int ySpeed;                // initial downward speed, set by the constructor
@@ -45,14 +49,19 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        int bottomWall, int topWall, int rightWall, int leftWall, Canvas drawingCanvas)
+                        int bottomWall, int topWall, int rightWall, int leftWall,  int vSpeed, int hSpeed, Canvas drawingCanvas)
     {
         xPosition = xPos;
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
-        //groundPosition = groundPos;
+        bottom = bottomWall;
+        top = topWall;
+        right = rightWall;
+        left = leftWall;
         canvas = drawingCanvas;
+        xSpeed = hSpeed;
+        ySpeed = vSpeed;
     }
 
     /**
@@ -82,16 +91,30 @@ public class BoxBall
         erase();
             
         // compute new position
-        // ySpeed += GRAVITY;
-        // yPosition += ySpeed;
-        // xPosition +=2;
+        yPosition += ySpeed;
+        xPosition +=2;
         
         //This is where you update position based on xSpeed and ySpeed
 
         // check if it has hit the ground
-        if (yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        if (yPosition >= (bottom - diameter) && ySpeed > 0) {
+            yPosition = (int)(bottom - diameter);
+            ySpeed = -ySpeed; 
+        }
+        //check if hits the top
+        if (yPosition <= (top - diameter) && ySpeed > 0) {
+            yPosition = (int)(top - diameter);
+            ySpeed += ySpeed; 
+        }
+        //check if it hits the right wall
+        if (xPosition >= (right + diameter) && xSpeed > 0) {
+            xPosition = (int)(right + diameter);
+            xSpeed = -xSpeed; 
+        }
+        //check if it hits the left wall
+        if (xPosition <= (left + diameter) && ySpeed > 0) {
+            xPosition = (int)(left + diameter);
+            xSpeed = -xSpeed; 
         }
 
         // draw again at new position
